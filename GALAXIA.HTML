@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Galaxia Romántica</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: url("https://64.media.tumblr.com/54662948953a7523aaa1ef3cf2240546/tumblr_p8zl6iQccs1tdtlxno1_500.gif") no-repeat center fixed;
+        background-size: cover;
+        font-family: 'Arial', sans-serif;
+        color: white;
+    }
+
+    .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        box-shadow: 
+            50px 100px white,
+            200px 300px white,
+            400px 150px white,
+            600px 250px white,
+            800px 100px white,
+            1000px 400px white;
+        animation: twinkle 5s infinite;
+    }
+
+    @keyframes twinkle {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+
+    .mensaje {
+        position: absolute;
+        font-size: 20px;
+        color: #ffb6f9;
+        animation: flotar 10s linear infinite;
+        white-space: nowrap;
+    }
+
+    @keyframes flotar {
+        0% {
+            transform: translateY(100vh);
+            opacity: 0;
+        }
+        10% {
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-10vh);
+            opacity: 0;
+        }
+    }
+
+    .boton {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 10px 20px;
+        background: #ff4dd2;
+        border: none;
+        border-radius: 20px;
+        color: white;
+        cursor: pointer;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="stars"></div>
+
+<button class="boton" onclick="agregarMensaje()">Tap me 💖</button>
+
+<script>
+const mensajes = [
+    "Te amo ✨",
+    "Eres mi universo 💫",
+    "Mi lugar favorito eres tú 💖",
+    "Contigo todo es más bonito 🌙",
+    "Eres mi estrella 🌟",
+    "Siempre tú 💕",
+    "Tu sonrisa vale mas que mil mundos ✨",
+    "Tu + yo = plan perfecto❤️",
+    "Eres mi persona👩🏽‍❤️‍👨🏻",
+    "Me gustas mas cada dia😍"
+];
+
+function agregarMensaje() {
+    const mensaje = document.createElement("div");
+    mensaje.classList.add("mensaje");
+
+    mensaje.innerText = mensajes[Math.floor(Math.random() * mensajes.length)];
+
+    mensaje.style.left = Math.random() * 90 + "vw";
+    mensaje.style.animationDuration = (6 + Math.random() * 6) + "s";
+
+    document.body.appendChild(mensaje);
+
+    setTimeout(() => {
+        mensaje.remove();
+    }, 12000);
+}
+</script>
+
+</body>
+</html>
